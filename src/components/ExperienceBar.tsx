@@ -21,3 +21,9 @@ export function ExperienceBar() {
     </header>
   );
 }
+
+export function Button() {
+  return (
+    <button type="button" className={styles.botao} color="blue"></button>
+  )
+}

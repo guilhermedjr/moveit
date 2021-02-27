@@ -1,11 +1,13 @@
+import { Provider } from 'next-auth/client'
+import { DarkModeButton } from '../components/DarkModeButton'
 import '../styles/global.css'
-
-import { ChallengesContext, ChallengesProvider } from '../contexts/ChallengesContext';
-import { CountdownProvider } from '../contexts/CountdownContext';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <Provider session={pageProps.session}>
+      <Component {...pageProps} />
+      <DarkModeButton />
+    </Provider>
   )
 }
 

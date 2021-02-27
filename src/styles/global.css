@@ -10,6 +10,10 @@
   --blue: #5965E0;
   --blue-dark: #4953B8;
   --blue-twitter: #2AA9E0;
+
+  --black: #000;
+  --grey: #1C1C1C;
+  --soft-grey: #363636;
 }
 
 * {
@@ -56,4 +60,21 @@ a {
 
   display: flex;
   flex-direction: column;
+}
+
+.logo-full {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.logo-icon {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.dark-mode {
+  background-color: var(--black);
+  color: var(--white);
 }

@@ -74,6 +74,21 @@ a {
   left: 1.5rem;
 }
 
+.color-theme-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100px 100px;
+}
+
+.color-theme-btn img {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0px;
+}
+
 .dark-mode {
   background-color: var(--black);
   color: var(--white);

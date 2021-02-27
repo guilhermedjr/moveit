@@ -1,4 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
+import Cookies from "js-cookie";
+import { GetServerSideProps } from "next";
 
 interface DarkModeContextData {
   isActive: boolean;
@@ -8,12 +10,20 @@ interface DarkModeContextData {
 
 interface DarkModeProviderProps {
   children: ReactNode;
+  isActive: boolean;
 }
 
 export const DarkModeContext = createContext({} as DarkModeContextData)
 
-export function DarkModeProvider({children}: DarkModeProviderProps) {
-  const [isActive, setIsActive] = useState(false)
+export function DarkModeProvider({
+  children,
+  ...rest
+}: DarkModeProviderProps) {
+  const [isActive, setIsActive] = useState(rest.isActive ?? false)
+
+  useEffect(() => {
+    Cookies.set('isDarkThemeActive', String(isActive))
+  }, [])
 
   function activateDarkMode() {
     setIsActive(true)
@@ -21,12 +31,10 @@ export function DarkModeProvider({children}: DarkModeProviderProps) {
 
   function deactivateDarkMode() {
     setIsActive(false)
-    // mudar cores
   }
 
   useEffect(() => {
-    console.log('O modo escuro está ativado? ' + isActive)
-    document.body.classList.toggle('dark-mode')
+    Cookies.set('isDarkThemeActive', String(isActive))
   }, [isActive])
 
   return (
@@ -40,4 +48,14 @@ export function DarkModeProvider({children}: DarkModeProviderProps) {
       {children}
     </DarkModeContext.Provider>
   )
+}
+
+export const getServerSideProps : GetServerSideProps = async(ctx) => {
+  const { isDarkThemeActive } = ctx.req.cookies;
+
+  return {
+    props: {
+      isActive: Boolean(isDarkThemeActive)
+    }
+  }
 }

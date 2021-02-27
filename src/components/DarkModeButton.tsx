@@ -1,18 +1,28 @@
 import { useContext } from 'react'
 import { DarkModeContext } from '../contexts/DarkModeContext'
-import styles from '../styles/components/DarkModeButton.module.css'
 
 export function DarkModeButton() {
   const { isActive, activateDarkMode, deactivateDarkMode } = useContext(DarkModeContext)
 
+  console.log('Botão renderizado. Valor de isActive: ' + isActive) //isActive dá undefined
+
+    // Não são reconhecidas como funções
+    //activateDarkMode();
+    //deactivateDarkMode();
+
   return (
     <div>
-      <input 
-        className='lamp dark-mode-btn' 
-        type='checkbox' 
-        aria-label='Dark mode'
+      <button 
+        className='color-theme-btn'
+        background-color= { isActive ? '#FFD700' : '#808080' } 
         onClick= { isActive ? deactivateDarkMode : activateDarkMode }
-      />
+      >
+        { isActive ? (
+          <img src='icons/sun.svg' alt='Light mode' />
+        ) : (
+          <img src='icons/moon.svg' alt='Dark mode'/>
+        ) }
+      </button>
     </div>
   )
 }

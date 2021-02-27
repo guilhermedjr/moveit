@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { GetServerSideProps } from 'next'
 import { useSession } from 'next-auth/client'
 import { LoginProvider } from '../contexts/LoginContext'
 

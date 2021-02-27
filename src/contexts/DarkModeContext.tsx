@@ -10,31 +10,34 @@ interface DarkModeContextData {
 
 interface DarkModeProviderProps {
   children: ReactNode;
-  isActive: boolean;
 }
 
 export const DarkModeContext = createContext({} as DarkModeContextData)
 
 export function DarkModeProvider({
-  children,
-  ...rest
+  children
 }: DarkModeProviderProps) {
-  const [isActive, setIsActive] = useState(rest.isActive ?? false)
+  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     Cookies.set('isDarkThemeActive', String(isActive))
   }, [])
 
   function activateDarkMode() {
+    console.log('A')
     setIsActive(true)
+    console.log('Dark theme ativado. Valor de isActive - ' + isActive)
   }
 
   function deactivateDarkMode() {
+    console.log('B')
     setIsActive(false)
+    console.log('Dark theme desativado. Valor de isActive - ' + isActive)
   }
 
   useEffect(() => {
     Cookies.set('isDarkThemeActive', String(isActive))
+    document.body.classList.toggle('dark-mode')
   }, [isActive])
 
   return (
@@ -50,7 +53,7 @@ export function DarkModeProvider({
   )
 }
 
-export const getServerSideProps : GetServerSideProps = async(ctx) => {
+/*export const getServerSideProps : GetServerSideProps = async(ctx) => {
   const { isDarkThemeActive } = ctx.req.cookies;
 
   return {
@@ -58,4 +61,4 @@ export const getServerSideProps : GetServerSideProps = async(ctx) => {
       isActive: Boolean(isDarkThemeActive)
     }
   }
-}
+}*/

@@ -4,11 +4,9 @@ import { DarkModeContext } from '../contexts/DarkModeContext'
 export function DarkModeButton() {
   const { isActive, activateDarkMode, deactivateDarkMode } = useContext(DarkModeContext)
 
-  console.log('Botão renderizado. Valor de isActive: ' + isActive) //isActive dá undefined
+  console.log('Botão renderizado. Valor de isActive: ' + isActive)
 
-    // Não são reconhecidas como funções
-    //activateDarkMode();
-    //deactivateDarkMode();
+  activateDarkMode()
 
   return (
     <div>

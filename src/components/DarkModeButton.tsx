@@ -4,10 +4,6 @@ import { DarkModeContext } from '../contexts/DarkModeContext'
 export function DarkModeButton() {
   const { isActive, activateDarkMode, deactivateDarkMode } = useContext(DarkModeContext)
 
-  console.log('Botão renderizado. Valor de isActive: ' + isActive)
-
-  activateDarkMode()
-
   return (
     <div>
       <button 

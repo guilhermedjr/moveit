@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import Cookies from "js-cookie";
-import { GetServerSideProps } from "next";
+import {} from '../components/DarkModeButton'
 
 interface DarkModeContextData {
   isActive: boolean;
@@ -24,15 +24,11 @@ export function DarkModeProvider({
   }, [])
 
   function activateDarkMode() {
-    console.log('A')
     setIsActive(true)
-    console.log('Dark theme ativado. Valor de isActive - ' + isActive)
   }
 
   function deactivateDarkMode() {
-    console.log('B')
     setIsActive(false)
-    console.log('Dark theme desativado. Valor de isActive - ' + isActive)
   }
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { LoginBox } from '../components/Login/LoginBox'
 import { LoginProvider } from '../contexts/LoginContext'
 
 export default function Index() {
@@ -8,7 +9,7 @@ export default function Index() {
       <Head>
         <title>Login | move.it</title>
       </Head>
-      <img className='logo-full' src='logo-full.svg' />
+      <LoginBox />
     </LoginProvider>
   )
 }

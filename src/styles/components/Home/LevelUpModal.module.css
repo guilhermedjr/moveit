@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+:global(body.dark-mode) .overlay {
+  background: rgba(102, 111, 129, 0.8);
+}
+
 .container {
   background: var(--white);
   width: 100%;
@@ -20,6 +24,10 @@
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
+}
+
+:global(body.dark-mode) .container {
+  background: var(--grey);
 }
 
 .container header {
@@ -35,10 +43,18 @@
   color: var(--title);
 }
 
+:global(body.dark-mode) .container strong {
+  color: var(--indigo);
+}
+
 .container p {
   font-size: 1.25rem;
   color: var(--text);
   margin-top: 0.25rem;
+}
+
+:global(body.dark-mode) .container p {
+  color: var(--white);
 }
 
 .container button {

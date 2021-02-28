@@ -1,0 +1,120 @@
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+  background: var(--indigo);
+
+}
+
+:global(body.dark-mode) .container {
+  background: var(--grey);
+}
+
+.container div:first-child {
+  max-width: 768px;
+  height: 41.25rem;
+
+}
+
+.container div:first-child img {
+  position: relative;
+  left: -4.25rem;
+  top: 5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.section > img {
+  width: 22.5rem;
+  height: 4.75rem;
+  margin-bottom: 6rem;
+}
+
+.section strong {
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 2.875rem;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.section > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.section > div img {
+  display: flex;
+  flex: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1.5rem;
+  align-self: center;
+}
+
+.section  > div p {
+  width: 15.875rem;
+  color: var(--white);
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
+
+.section form {
+  display: flex;
+
+}
+
+.section input {
+  height: 5rem;
+  width: 21.25rem;
+  padding: 1.4375rem 1.895rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 2.125rem;
+  color: var(--white);
+  background: linear-gradient(to right, var(--blue-dark), var(--blue));
+  border: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+:global(body.dark-mode) .section input {
+  background: linear-gradient(to right, var(--indigo), var(--dark-slate-blue));
+}
+
+.section input::placeholder {
+  color: var(--gray-line);
+}
+
+:global(body.dark-mode) .section input::placeholder {
+  color: var(--gray-line);
+}
+
+.section button {
+  height: 5rem;
+  width: 5rem;
+  background: var(--green);
+  border: 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.section button > img {
+  justify-content: center;
+  margin: auto;
+}
+
+.section button:disabled {
+  background: var(--blue-dark);
+  cursor: not-allowed;
+}
+
+:global(body.dark-mode) .section button:disabled {
+  background: var(--indigo);
+}

@@ -15,7 +15,10 @@
   --grey: #1C1C1C;
   --soft-grey: #363636;
   --indigo: #4B0082;
-  --midnight-blue: #fff;
+  --royal-blue: #4169E1;
+  --dark-slate-blue: #483D8B;
+  --slate-blue: #6959CD;
+  --dodger-blue: #1E90FF;
 }
 
 * {

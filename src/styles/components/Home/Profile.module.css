@@ -19,8 +19,8 @@
   color: var(--title);
 }
 
-body.dark-mode .profileContainer div strong {
-  color: var(--midnight-blue);
+:global(body.dark-mode) .profileContainer div strong {
+  color: var(--royal-blue);
 }
 
 

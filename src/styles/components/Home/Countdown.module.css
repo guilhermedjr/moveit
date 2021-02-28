@@ -6,6 +6,10 @@
   color: var(--title);
 }
 
+:global(body.dark-mode) .countdownContainer {
+  color: var(--dark-slate-blue);
+}
+
 .countdownContainer > div {
   flex: 1;
 
@@ -20,6 +24,7 @@
   text-align: center;
 }
 
+
 .countdownContainer > div span {
   flex: 1;
 }
@@ -30,6 +35,14 @@
 
 .countdownContainer > div span:last-child {
   border-left: 1px solid #f0f1f3;
+}
+
+:global(body.dark-mode) .countdownContainer > div span {
+  border-color: var(--indigo);
+}
+
+:global(body.dark-mode) .countdownContainer > div {
+  background: var(--grey);
 }
 
 .countdownContainer > span {

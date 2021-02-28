@@ -20,9 +20,10 @@
   height: 4px;
   border-radius: 4px;
   background: var(--green);
+  transition: width 4px;
 }
 
-.dark-mode .experienceBar > div > div {
+:global(body.dark-mode) .experienceBar > div > div {
   background: var(--indigo);
 }
   

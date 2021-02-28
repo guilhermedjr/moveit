@@ -53,6 +53,10 @@
   border-bottom: 1px solid var(--gray-line);
 }
 
+body.dark-mode .challengeActive header {
+  color: var(--indigo);
+}
+
 .challengeActive main {
   flex: 1;
   display: flex;

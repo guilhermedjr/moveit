@@ -21,6 +21,10 @@
   border-radius: 4px;
   background: var(--green);
 }
+
+.dark-mode .experienceBar > div > div {
+  background: var(--indigo);
+}
   
 span.currentExperience {
   position: absolute;

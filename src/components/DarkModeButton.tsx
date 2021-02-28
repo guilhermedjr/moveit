@@ -1,12 +1,6 @@
 import { useContext } from 'react'
 import { DarkModeContext } from '../contexts/DarkModeContext'
 
-/*<button 
-className='color-theme-btn'
-background-color= { isActive ? '#FFD700' : '#808080' } 
-onClick= { isActive ? deactivateDarkMode : activateDarkMode }
->*/
-
 export function DarkModeButton() {
   const { isActive, activateDarkMode, deactivateDarkMode } = useContext(DarkModeContext)
 

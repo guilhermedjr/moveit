@@ -1,9 +1,16 @@
-import { useContext } from 'react'
-import { LoginContext } from '../../contexts/LoginContext'
+import { signOut } from 'next-auth/client'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { AuthContext } from '../../contexts/AuthContext'
 import styles from '../../styles/components/Login/LoginBox.module.css'
 
 export function LoginBox() {
-  const { username, name, login, logout } = useContext(LoginContext)
+  const {user, login, logout } = useContext(AuthContext)
+
+  const [userName, setUserName] = useState('')
+
+  async function signIn() : Promise<void> {
+    await login(userName)
+  }
 
   return (
     <div className={styles.container}>
@@ -20,8 +27,18 @@ export function LoginBox() {
         </div>
         <div>
           <form onSubmit={() => {}}>
-            <input type="text" placeholder="Digite seu username" />
-            <button disabled type="submit">
+            <input 
+              id='txtUsername' 
+              type="text" 
+              placeholder="Digite seu username"
+              value={userName}
+              onChange={event => setUserName(event.target.value)}
+            />
+            <button 
+              disabled={userName.length == 0} 
+              type="submit"
+              onClick={signIn}
+            >
               <img src="/icons/right-arrow.svg" alt="entrar" />
             </button>
           </form>

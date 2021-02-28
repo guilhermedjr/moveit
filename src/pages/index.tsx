@@ -1,15 +1,14 @@
 import Head from 'next/head'
 import { LoginBox } from '../components/Login/LoginBox'
-import { LoginProvider } from '../contexts/LoginContext'
+import { AuthProvider } from '../contexts/AuthContext'
 
 export default function Index() {
-
   return (
-    <LoginProvider>
+    <AuthProvider>
       <Head>
         <title>Login | move.it</title>
       </Head>
       <LoginBox />
-    </LoginProvider>
+    </AuthProvider>
   )
 }

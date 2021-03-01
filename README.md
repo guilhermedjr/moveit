@@ -1,6 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Moveit
 
-## Getting Started
+<img src='public/logo-full.svg'>
+
+This is a project developed during the **Next Level Week #4**, presented by @Rocketseat during February 22-28, 2021.
+
+Moveit is a Pomodoro chronometer, which each work/study cycle launches a physical exercise challenge. At each conclusion, the user gains xp, which when accumulated allows him to advance in level.
+Moveit was made especially for developers and IT professionals, who spend several hours a day in front of the computer. It is an incentive for us not to overlook our health.
+
+<img src='public/favicon.svg'>
+<img src='.github/rocketseat.jpg'>
+
+## Technologies used/to be used
+
+### Back-end
+
+<img alt="Csharp" src="https://img.shields.io/badge/-C%23-7022DC?style=flat-square&logo=c-sharp&logoColor=white" />
+<img alt="dotnet" src="https://img.shields.io/badge/-.NET-702D91?style=flat-square&logo=.net&logoColor=white" />
+- **Entity Framework**
+
+### Front-end
+
+<img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
+<img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
+
+## Additional Features
+
+- [X] Dark mode and Experience-bar animation
+- [] GitHub OAuth Authentication **(in progress)**
+- [] Back-end layer to save users' progress
+- [] Implementation of authentication security - with password and two-factor login
+- [] Ranking system
+- And more... always looking for the next level! 
+
+## License
+
+- [MIT](https://choosealicense.com/licenses/mit/)
+
+### Getting Started with Next.js
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
@@ -18,7 +56,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+### Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -27,7 +65,7 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+### Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 

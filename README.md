@@ -16,7 +16,7 @@ Moveit was made especially for developers and IT professionals, who spend severa
 
 <img alt="Csharp" src="https://img.shields.io/badge/-C%23-7022DC?style=flat-square&logo=c-sharp&logoColor=white" />
 <img alt="dotnet" src="https://img.shields.io/badge/-.NET-702D91?style=flat-square&logo=.net&logoColor=white" />
-- **Entity Framework**
+- Entity Framework
 
 ### Front-end
 
@@ -26,10 +26,10 @@ Moveit was made especially for developers and IT professionals, who spend severa
 ## Additional Features
 
 - [X] Dark mode and Experience-bar animation
-- [] GitHub OAuth Authentication **(in progress)**
-- [] Back-end layer to save users' progress
-- [] Implementation of authentication security - with password and two-factor login
-- [] Ranking system
+- [ ] GitHub OAuth Authentication **(in progress)**
+- [ ] Back-end layer to save users' progress
+- [ ] Implementation of authentication security - with password and two-factor login
+- [ ] Ranking system
 - And more... always looking for the next level! 
 
 ## License

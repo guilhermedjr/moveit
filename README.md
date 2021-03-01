@@ -7,7 +7,7 @@ This is a project developed during the **Next Level Week #4**, presented by @Roc
 Moveit is a Pomodoro chronometer, which each work/study cycle launches a physical exercise challenge. At each conclusion, the user gains xp, which when accumulated allows him to advance in level.
 Moveit was made especially for developers and IT professionals, who spend several hours a day in front of the computer. It is an incentive for us not to overlook our health.
 
-<img src='public/favicon.svg'>
+<img src='public/favicon.png'>
 <img src='.github/rocketseat.jpg'>
 
 ## Technologies used/to be used

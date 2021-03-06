@@ -1,13 +1,13 @@
 # Moveit
 
-<img src='public/logo-full.svg'>
+<img src='web/public/logo-full.svg'>
 
 This is a project developed during the **Next Level Week #4**, presented by @Rocketseat during February 22-28, 2021.
 
 Moveit is a Pomodoro chronometer, which each work/study cycle launches a physical exercise challenge. At each conclusion, the user gains xp, which when accumulated allows him to advance in level.
 Moveit was made especially for developers and IT professionals, who spend several hours a day in front of the computer. It is an incentive for us not to overlook our health.
 
-<img src='public/favicon.png'>
+<img src='web/public/favicon.png'>
 <img src='.github/rocketseat.jpg'>
 
 ## Technologies used/to be used
@@ -23,11 +23,11 @@ Moveit was made especially for developers and IT professionals, who spend severa
 <img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
 <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
 
-## Additional Features
+## Main Additional Features
 
 - [X] Dark mode and Experience-bar animation
-- [ ] GitHub OAuth Authentication **(in progress)**
-- [ ] Back-end layer to save users' progress
+- [X] GitHub OAuth Authentication
+- [ ] Back-end layer to save users' progress **(in progress)**
 - [ ] Implementation of authentication security - with password and two-factor login
 - [ ] Ranking system
 - And more... always looking for the next level! 

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "Nxi2TtyU5nFhZFtooYBmfqmynAa4iw8XHYn18L4ELgJx+1y6F34cQ2JXAXT7fJc1PcUy7wvoJDnqtMFPsr/hZg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\server\\server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

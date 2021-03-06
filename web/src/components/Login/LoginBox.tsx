@@ -1,10 +1,10 @@
-import { signOut } from 'next-auth/client'
-import { useContext, useEffect, useRef, useState } from 'react'
+import router from 'next/router'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import styles from '../../styles/components/Login/LoginBox.module.css' 
 
 export function LoginBox() {
-  const {user, login, logout } = useContext(AuthContext)
+  const { user, login } = useContext(AuthContext)
 
   const [userName, setUserName] = useState('')
 
@@ -43,6 +43,17 @@ export function LoginBox() {
             </button>
           </form>
         </div>
+        
+        { Object.keys(user).length !== 0 && (
+             <button 
+             className={styles.continueButton}
+             disabled={userName.length == 0} 
+             type="button"
+             onClick={() => router.push('/home')}
+           >
+             Continuar como {user.username}
+           </button>
+        ) }
       </section>
     </div>
   )

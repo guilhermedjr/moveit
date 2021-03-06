@@ -35,10 +35,10 @@ export function AuthProvider({children}: AuthProviderProps) {
     if (typeof(userCookie) !== 'undefined') {
       const userCookieParse = JSON.parse(userCookie) as IUser;
       const userParams = {
-        name: userCookieParse.name ?? '',
-        username: userCookieParse.username ?? '',
-        avatar_url: userCookieParse.avatar_url ?? '',
-        bio: userCookieParse.bio ?? ''
+        name: userCookieParse.name,
+        username: userCookieParse.username,
+        avatar_url: userCookieParse.avatar_url,
+        bio: userCookieParse.bio
       };
       setUser(userParams)
     }
@@ -73,10 +73,10 @@ export function AuthProvider({children}: AuthProviderProps) {
   }
 
   async function logout() : Promise<void> {
-    Cookies.remove('user')
+    /*Cookies.remove('user')
     Cookies.remove('level')
     Cookies.remove('currentExperience')
-    Cookies.remove('challengesCompleted')
+    Cookies.remove('challengesCompleted')*/
     router.push('/index')
   }
 

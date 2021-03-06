@@ -127,3 +127,13 @@
   background: var(--indigo);
 }
 
+.continueButton {
+  height: 2rem;
+  width: 21.25rem;
+  background: linear-gradient(to right, var(--blue-dark), var(--blue));
+}
+
+:global(body.dark-mode) .continueButton {
+  background: linear-gradient(to right, var(--indigo), var(--dark-slate-blue));
+}
+

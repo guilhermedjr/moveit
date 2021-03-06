@@ -1,7 +1,7 @@
 import { signOut } from 'next-auth/client'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
-import styles from '../../styles/components/Login/LoginBox.module.css'
+import styles from '../../styles/components/Login/LoginBox.module.css' 
 
 export function LoginBox() {
   const {user, login, logout } = useContext(AuthContext)
@@ -26,7 +26,7 @@ export function LoginBox() {
           <p>Faça login com seu Github para começar</p>
         </div>
         <div>
-          <form onSubmit={() => {}}>
+          <form onSubmit={(event) => {event.preventDefault()}}>
             <input 
               id='txtUsername' 
               type="text" 

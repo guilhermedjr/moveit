@@ -10,6 +10,9 @@ import {GetServerSideProps} from 'next';
 import styles from '../styles/pages/Home.module.css';
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
+import { LogOutButton } from '../components/LogOutButton';
+import { LogoIcon } from '../components/LogoIcon';
+import { RankingButton } from '../components/RankingButton';
 
 interface HomeProps {
   level: number;
@@ -29,7 +32,8 @@ export default function Home(props : HomeProps) {
           <title>Início | move.it</title>
         </Head>
 
-        <img className='logo-icon' src='favicon.png' />
+        <LogoIcon />
+        <LogOutButton />
 
         <ExperienceBar />
 

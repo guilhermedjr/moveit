@@ -24,11 +24,14 @@
 }
 
 
-.profileContainer div p {
+.profileContainer div p:first-child {
   font-size: 1rem;
   margin-top: 0.5rem;
+  position: relative;
+  top: -30px;
+  left: 200px;
 }
 
-.profileContainer div p img {
+.profileContainer div p:first-child img {
   margin-right: 0.5rem;
 }

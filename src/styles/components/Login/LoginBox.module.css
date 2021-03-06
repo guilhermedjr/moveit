@@ -1,5 +1,6 @@
 .container {
   height: 100vh;
+  width: 100vw;
   margin: 0 auto;
   padding: 2.5rem 2rem;
   display: flex;
@@ -21,7 +22,9 @@
 .container div:first-child img {
   position: relative;
   left: -4.25rem;
-  top: 5rem;
+  top: 0rem;
+  height: 41.25rem;
+  max-width: 768px;
 }
 
 .section {
@@ -123,3 +126,4 @@
 :global(body.dark-mode) .section button:disabled {
   background: var(--indigo);
 }
+

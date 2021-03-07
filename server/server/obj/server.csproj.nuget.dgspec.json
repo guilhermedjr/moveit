@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\server\\server.csproj": {}
+    "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\WebAPI\\server\\server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\server\\server.csproj": {
+    "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\WebAPI\\server\\server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\server\\server.csproj",
+        "projectUniqueName": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\WebAPI\\server\\server.csproj",
         "projectName": "server",
-        "projectPath": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\server\\server.csproj",
+        "projectPath": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\WebAPI\\server\\server.csproj",
         "packagesPath": "C:\\Users\\GuilhermeSantos-BDSD\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\server\\obj\\",
+        "outputPath": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\WebAPI\\server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GuilhermeSantos-BDSD\\AppData\\Roaming\\NuGet\\NuGet.Config",

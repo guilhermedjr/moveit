@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Data;
+using WebAPI.Contexts;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -24,14 +25,14 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Challenge>>> GetChallenges()
         {
-            return await _context.Challenges.ToListAsync();
+            return await _context.Challenge.ToListAsync();
         }
 
         // GET: api/Challenges/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Challenge>> GetChallenge(int id)
         {
-            var challenge = await _context.Challenges.FindAsync(id);
+            var challenge = await _context.Challenge.FindAsync(id);
 
             if (challenge == null)
             {
@@ -46,7 +47,7 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChallenge(int id, Challenge challenge)
         {
-            if (id != challenge.Id)
+            if (id != challenge.ChallengeId)
             {
                 return BadRequest();
             }
@@ -77,23 +78,23 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Challenge>> PostChallenge(Challenge challenge)
         {
-            _context.Challenges.Add(challenge);
+            _context.Challenge.Add(challenge);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetChallenge", new { id = challenge.Id }, challenge);
+            return CreatedAtAction("GetChallenge", new { id = challenge.ChallengeId }, challenge);
         }
 
         // DELETE: api/Challenges/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChallenge(int id)
         {
-            var challenge = await _context.Challenges.FindAsync(id);
+            var challenge = await _context.Challenge.FindAsync(id);
             if (challenge == null)
             {
                 return NotFound();
             }
 
-            _context.Challenges.Remove(challenge);
+            _context.Challenge.Remove(challenge);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +102,7 @@ namespace WebAPI.Controllers
 
         private bool ChallengeExists(int id)
         {
-            return _context.Challenges.Any(e => e.Id == id);
+            return _context.Challenge.Any(e => e.ChallengeId == id);
         }
     }
 }

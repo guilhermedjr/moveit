@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Contexts;
@@ -22,15 +22,17 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Users
+        [Authorize (Roles = "dev")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             return await _context.User.ToListAsync();
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        // GET: api/Users/ById/5
+        [Authorize (Roles = "dev")]
+        [HttpGet("ById/{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
         {
             var user = await _context.User.FindAsync(id);
 
@@ -42,15 +44,54 @@ namespace WebAPI.Controllers
             return user;
         }
 
+        // GET: api/Users/ByUsername/guilhermedjr
+        [Authorize]
+        [HttpGet("ByUsername/{username}")]
+        public async Task<ActionResult<User>> GetUserByUsername(string username)
+        {
+            var user = await _context.User.SingleAsync(u => u.Username == username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
+        // GET: api/Users/Search/guilhermedjr
+        [Authorize]
+        [HttpGet("Search/{search}")]
+        public async Task<ActionResult<IEnumerable<User>>> SearchUsers(string search)
+        {
+            var users = await _context.User.Where(u => EF.Functions.Like(u.Username, $"%{search}%"))
+                         .ToListAsync();
+
+            if (users == null)
+             return NotFound();
+
+            return users;
+        }
+
+        // POST: api/Users
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser(User user)
+        {
+            _context.User.Add(user);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUserById", new { id = user.UserId }, user);
+        }
+
         // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.UserId)
-            {
-                return BadRequest();
-            }
+              return BadRequest();
+
 
             _context.Entry(user).State = EntityState.Modified;
 
@@ -73,26 +114,38 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        // PATCH: api/Users/guilhermedjr
+        [Authorize]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchUser(int id, User user)
         {
-            _context.User.Add(user);
-            await _context.SaveChangesAsync();
+           if (id != user.UserId)
+            return BadRequest();
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+           if (!UserExists(id))
+            return NotFound();
+
+           _context.Entry(user).State = EntityState.Modified;
+
+           try
+           {
+              return Ok(await _context.SaveChangesAsync());
+           }
+           catch (DbUpdateConcurrencyException)
+           {
+              throw;
+           }
         }
 
         // DELETE: api/Users/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.User.FindAsync(id);
             if (user == null)
-            {
-                return NotFound();
-            }
+              return NotFound();
+    
 
             _context.User.Remove(user);
             await _context.SaveChangesAsync();
@@ -102,7 +155,7 @@ namespace WebAPI.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.UserId == id);
+            return _context.User.Any(u => u.UserId == id);
         }
     }
 }

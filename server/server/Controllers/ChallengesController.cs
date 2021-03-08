@@ -42,8 +42,17 @@ namespace WebAPI.Controllers
             return challenge;
         }
 
+        // POST: api/Challenges
+        [HttpPost]
+        public async Task<ActionResult<Challenge>> PostChallenge(Challenge challenge)
+        {
+            _context.Challenge.Add(challenge);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetChallenge", new { id = challenge.ChallengeId }, challenge);
+        }
+
         // PUT: api/Challenges/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChallenge(int id, Challenge challenge)
         {
@@ -73,15 +82,26 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Challenges
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Challenge>> PostChallenge(Challenge challenge)
+        // PATCH: api/Challenges/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchUser(int id, Challenge challenge)
         {
-            _context.Challenge.Add(challenge);
-            await _context.SaveChangesAsync();
+            if (id != challenge.ChallengeId)
+                return BadRequest();
 
-            return CreatedAtAction("GetChallenge", new { id = challenge.ChallengeId }, challenge);
+            if (!ChallengeExists(id))
+                return NotFound();
+
+            _context.Entry(challenge).State = EntityState.Modified;
+
+            try
+            {
+               return Ok(await _context.SaveChangesAsync());
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
         }
 
         // DELETE: api/Challenges/5
@@ -102,7 +122,7 @@ namespace WebAPI.Controllers
 
         private bool ChallengeExists(int id)
         {
-            return _context.Challenge.Any(e => e.ChallengeId == id);
+            return _context.Challenge.Any(c => c.ChallengeId == id);
         }
     }
 }

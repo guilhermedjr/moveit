@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Contexts;
@@ -22,6 +22,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/ChallengeTypes
+        [Authorize(Roles = "dev")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ChallengeType>>> GetChallengeType()
         {
@@ -29,6 +30,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/ChallengeTypes/5
+        [Authorize(Roles = "dev")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeType>> GetChallengeType(int id)
         {
@@ -43,7 +45,7 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/ChallengeTypes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "dev")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChallengeType(int id, ChallengeType challengeType)
         {
@@ -74,7 +76,7 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/ChallengeTypes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "dev")]
         [HttpPost]
         public async Task<ActionResult<ChallengeType>> PostChallengeType(ChallengeType challengeType)
         {
@@ -85,6 +87,7 @@ namespace WebAPI.Controllers
         }
 
         // DELETE: api/ChallengeTypes/5
+        [Authorize(Roles = "dev")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChallengeType(int id)
         {
@@ -102,7 +105,7 @@ namespace WebAPI.Controllers
 
         private bool ChallengeTypeExists(int id)
         {
-            return _context.ChallengeType.Any(e => e.Id == id);
+            return _context.ChallengeType.Any(ct => ct.Id == id);
         }
     }
 }

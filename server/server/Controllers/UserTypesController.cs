@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Contexts;
@@ -22,6 +22,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/UserTypes
+        [Authorize (Roles = "dev")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserType>>> GetUserType()
         {
@@ -29,6 +30,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/UserTypes/5
+        [Authorize(Roles = "dev")]
         [HttpGet("{id}")]
         public async Task<ActionResult<UserType>> GetUserType(int id)
         {
@@ -42,8 +44,20 @@ namespace WebAPI.Controllers
             return userType;
         }
 
+        // POST: api/UserTypes
+        [Authorize(Roles = "dev")]
+        [HttpPost]
+        public async Task<ActionResult<UserType>> PostUserType(UserType userType)
+        {
+            _context.UserType.Add(userType);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUserType", new { id = userType.Id }, userType);
+        }
+
+
         // PUT: api/UserTypes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "dev")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserType(int id, UserType userType)
         {
@@ -73,18 +87,8 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/UserTypes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<UserType>> PostUserType(UserType userType)
-        {
-            _context.UserType.Add(userType);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUserType", new { id = userType.Id }, userType);
-        }
-
         // DELETE: api/UserTypes/5
+        [Authorize(Roles = "dev")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserType(int id)
         {
@@ -102,7 +106,7 @@ namespace WebAPI.Controllers
 
         private bool UserTypeExists(int id)
         {
-            return _context.UserType.Any(e => e.Id == id);
+            return _context.UserType.Any(ut => ut.Id == id);
         }
     }
 }

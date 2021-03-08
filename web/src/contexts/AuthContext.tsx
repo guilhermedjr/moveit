@@ -2,7 +2,7 @@ import { createContext, ReactNode, SetStateAction, useEffect, useState } from "r
 import { useRouter } from 'next/router'
 import Cookies from "js-cookie"
 
-import axios from 'axios'
+import { Serotonina } from '../services/Serotonina'
 
 interface IUser {
   name: string;
@@ -50,11 +50,8 @@ export function AuthProvider({children}: AuthProviderProps) {
 
   async function login(userName: string): Promise<void> {
     try {
-      const response = await axios.get(
-        `https://api.github.com/users/${userName}`)
-
-      const data = response.data
-      console.log(data)
+      const data = 
+        await new Serotonina().httpGet(`https://api.github.com/users/${userName}`)
       
       const user = {
         name: data.name,
@@ -73,10 +70,6 @@ export function AuthProvider({children}: AuthProviderProps) {
   }
 
   async function logout() : Promise<void> {
-    /*Cookies.remove('user')
-    Cookies.remove('level')
-    Cookies.remove('currentExperience')
-    Cookies.remove('challengesCompleted')*/
     router.push('/index')
   }
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Contexts;
@@ -44,22 +43,18 @@ namespace WebAPI.Controllers
 
         // POST: api/Challenges
         [HttpPost]
-        public async Task<ActionResult<Challenge>> PostChallenge(Challenge challenge)
+        public async Task<ActionResult<Challenge>> PostChallenge([FromBody] Challenge challenge)
         {
             _context.Challenge.Add(challenge);
-            await _context.SaveChangesAsync();
+             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetChallenge", new { id = challenge.ChallengeId }, challenge);
         }
 
         // PUT: api/Challenges/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutChallenge(int id, Challenge challenge)
+        [HttpPut]
+        public async Task<IActionResult> PutChallenge([FromBody] Challenge challenge)
         {
-            if (id != challenge.ChallengeId)
-            {
-                return BadRequest();
-            }
 
             _context.Entry(challenge).State = EntityState.Modified;
 
@@ -69,28 +64,16 @@ namespace WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ChallengeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
         }
 
         // PATCH: api/Challenges/5
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchUser(int id, Challenge challenge)
+        [HttpPatch]
+        public async Task<IActionResult> PatchUser([FromBody] Challenge challenge)
         {
-            if (id != challenge.ChallengeId)
-                return BadRequest();
-
-            if (!ChallengeExists(id))
-                return NotFound();
 
             _context.Entry(challenge).State = EntityState.Modified;
 
@@ -118,11 +101,6 @@ namespace WebAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool ChallengeExists(int id)
-        {
-            return _context.Challenge.Any(c => c.ChallengeId == id);
         }
     }
 }

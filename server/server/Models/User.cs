@@ -12,6 +12,7 @@ namespace WebAPI.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public UserType Role { get; set; }
+        public int RoleId { get; set; }
         public int? Level { get; set; }
         public int? LevelExperience { get; set; }
         public List<ChallengeUser> UserChallenges { get; set; }

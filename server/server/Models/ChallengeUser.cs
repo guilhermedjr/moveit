@@ -15,5 +15,17 @@ namespace WebAPI.Models
 
         public int ExecutionId { get; set; }
         public DateTime FinishHour { get; set; }
+
+        public ChallengeUser(int challengeId, int userId, int executionId, 
+          DateTime finishHour, Challenge challenge)
+        {
+            this.ChallengeId = challengeId;
+            this.UserId = userId;
+            this.ExecutionId = executionId;
+            this.FinishHour = finishHour;
+            this.Challenge = challenge;
+        }
+
+        public ChallengeUser() { }
     }
 }

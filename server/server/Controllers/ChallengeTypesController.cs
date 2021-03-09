@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/ChallengeTypes
-        [Authorize(Roles = "dev")]
+        //[Authorize(Roles = "dev")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ChallengeType>>> GetChallengeType()
         {
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/ChallengeTypes/5
-        [Authorize(Roles = "dev")]
+        //[Authorize(Roles = "dev")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeType>> GetChallengeType(int id)
         {
@@ -44,16 +44,22 @@ namespace WebAPI.Controllers
             return challengeType;
         }
 
-        // PUT: api/ChallengeTypes/5
-        [Authorize(Roles = "dev")]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutChallengeType(int id, ChallengeType challengeType)
+        // POST: api/ChallengeTypes
+        //[Authorize(Roles = "dev")]
+        [HttpPost]
+        public async Task<ActionResult<ChallengeType>> PostChallengeType([FromBody] ChallengeType challengeType)
         {
-            if (id != challengeType.Id)
-            {
-                return BadRequest();
-            }
+            _context.ChallengeType.Add(challengeType);
+            await _context.SaveChangesAsync();
 
+            return CreatedAtAction("GetChallengeType", new { id = challengeType.Id }, challengeType);
+        }
+
+        // PUT: api/ChallengeTypes
+        //[Authorize(Roles = "dev")]
+        [HttpPut]
+        public async Task<IActionResult> PutChallengeType([FromBody] ChallengeType challengeType)
+        {
             _context.Entry(challengeType).State = EntityState.Modified;
 
             try
@@ -62,32 +68,14 @@ namespace WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ChallengeTypeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+               throw;
             }
 
             return NoContent();
         }
 
-        // POST: api/ChallengeTypes
-        [Authorize(Roles = "dev")]
-        [HttpPost]
-        public async Task<ActionResult<ChallengeType>> PostChallengeType(ChallengeType challengeType)
-        {
-            _context.ChallengeType.Add(challengeType);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetChallengeType", new { id = challengeType.Id }, challengeType);
-        }
-
         // DELETE: api/ChallengeTypes/5
-        [Authorize(Roles = "dev")]
+        //[Authorize(Roles = "dev")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChallengeType(int id)
         {
@@ -101,11 +89,6 @@ namespace WebAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool ChallengeTypeExists(int id)
-        {
-            return _context.ChallengeType.Any(ct => ct.Id == id);
         }
     }
 }

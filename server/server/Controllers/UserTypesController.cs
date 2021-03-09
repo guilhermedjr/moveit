@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/UserTypes
-        [Authorize (Roles = "dev")]
+        //[Authorize (Roles = "dev")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserType>>> GetUserType()
         {
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/UserTypes/5
-        [Authorize(Roles = "dev")]
+        //[Authorize(Roles = "dev")]
         [HttpGet("{id}")]
         public async Task<ActionResult<UserType>> GetUserType(int id)
         {
@@ -45,9 +45,9 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/UserTypes
-        [Authorize(Roles = "dev")]
+        //[Authorize(Roles = "dev")]
         [HttpPost]
-        public async Task<ActionResult<UserType>> PostUserType(UserType userType)
+        public async Task<ActionResult<UserType>> PostUserType([FromBody] UserType userType)
         {
             _context.UserType.Add(userType);
             await _context.SaveChangesAsync();
@@ -57,14 +57,10 @@ namespace WebAPI.Controllers
 
 
         // PUT: api/UserTypes/5
-        [Authorize(Roles = "dev")]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserType(int id, UserType userType)
+        //[Authorize(Roles = "dev")]
+        [HttpPut]
+        public async Task<IActionResult> PutUserType([FromBody] UserType userType)
         {
-            if (id != userType.Id)
-            {
-                return BadRequest();
-            }
 
             _context.Entry(userType).State = EntityState.Modified;
 
@@ -74,21 +70,14 @@ namespace WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserTypeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
         }
 
         // DELETE: api/UserTypes/5
-        [Authorize(Roles = "dev")]
+        //[Authorize(Roles = "dev")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserType(int id)
         {
@@ -102,11 +91,6 @@ namespace WebAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool UserTypeExists(int id)
-        {
-            return _context.UserType.Any(ut => ut.Id == id);
         }
     }
 }

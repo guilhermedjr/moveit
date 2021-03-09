@@ -22,16 +22,16 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Users
-        [Authorize (Roles = "dev")]
+        //[Authorize (Roles = "dev")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             return await _context.User.ToListAsync();
         }
 
-        // GET: api/Users/ById/5
-        [Authorize (Roles = "dev")]
-        [HttpGet("ById/{id}")]
+        // GET: api/Users/ById?id=5
+        //[Authorize (Roles = "dev")]
+        [HttpGet("ById")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
             var user = await _context.User.FindAsync(id);
@@ -44,9 +44,9 @@ namespace WebAPI.Controllers
             return user;
         }
 
-        // GET: api/Users/ByUsername/guilhermedjr
-        [Authorize]
-        [HttpGet("ByUsername/{username}")]
+        // GET: api/Users/ByUsername?username=guilhermedjr
+        //[Authorize]
+        [HttpGet("ByUsername")]
         public async Task<ActionResult<User>> GetUserByUsername(string username)
         {
             var user = await _context.User.SingleAsync(u => u.Username == username);
@@ -59,12 +59,12 @@ namespace WebAPI.Controllers
             return user;
         }
 
-        // GET: api/Users/Search/guilhermedjr
-        [Authorize]
-        [HttpGet("Search/{search}")]
-        public async Task<ActionResult<IEnumerable<User>>> SearchUsers(string search)
+        // GET: api/Users/Search?s=guilhermedjr
+        //[Authorize]
+        [HttpGet("Search")]
+        public async Task<ActionResult<IEnumerable<User>>> SearchUsers(string s)
         {
-            var users = await _context.User.Where(u => EF.Functions.Like(u.Username, $"%{search}%"))
+            var users = await _context.User.Where(u => EF.Functions.Like(u.Username, $"%{s}%"))
                          .ToListAsync();
 
             if (users == null)
@@ -74,9 +74,9 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Users
-        [Authorize]
+        //[Authorize]
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser([FromBody] User user)
         {
             _context.User.Add(user);
             await _context.SaveChangesAsync();
@@ -85,13 +85,10 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/Users/5
-        [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        //[Authorize]
+        [HttpPut]
+        public async Task<IActionResult> PutUser([FromBody] User user)
         {
-            if (id != user.UserId)
-              return BadRequest();
-
 
             _context.Entry(user).State = EntityState.Modified;
 
@@ -101,29 +98,17 @@ namespace WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
         }
 
-        // PATCH: api/Users/guilhermedjr
-        [Authorize]
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchUser(int id, User user)
+        // PATCH: api/Users/5
+        //[Authorize]
+        [HttpPatch]
+        public async Task<IActionResult> PatchUser([FromBody] User user)
         {
-           if (id != user.UserId)
-            return BadRequest();
-
-           if (!UserExists(id))
-            return NotFound();
 
            _context.Entry(user).State = EntityState.Modified;
 
@@ -138,7 +123,7 @@ namespace WebAPI.Controllers
         }
 
         // DELETE: api/Users/5
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

@@ -27,9 +27,11 @@ Moveit was made especially for developers and IT professionals, who spend severa
 
 - [X] Dark mode and Experience-bar animation
 - [X] GitHub OAuth Authentication
+- [ ] Level achievement sharing via social media
 - [ ] Back-end layer to save users' progress **(in progress)**
-- [ ] Implementation of authentication security - with password and two-factor login
 - [ ] Ranking system
+- [ ] Implementation of authentication security - with password and two-factor login
+- [ ] Incentives for networking between the developers 
 - And more... always looking for the next level! 
 
 ## License

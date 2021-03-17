@@ -4,12 +4,13 @@ import { AuthContext } from '../../contexts/AuthContext'
 import styles from '../../styles/components/Login/LoginBox.module.css' 
 
 export function LoginBox() {
-  const { user, login } = useContext(AuthContext)
+  const { user, login, signIn } = useContext(AuthContext)
 
   const [userName, setUserName] = useState('')
 
-  async function signIn() : Promise<void> {
-    await login(userName)
+  async function handleLogin() : Promise<void> {
+    if (!await login(userName))
+      await signIn(userName)
   }
 
   return (
@@ -23,7 +24,7 @@ export function LoginBox() {
         <strong>Bem-vindo</strong>
         <div>
           <img src="/icons/github.svg" alt="github" />
-          <p>Faça login com seu Github para começar</p>
+          <p>Faça login ou cadastre-se com seu Github para começar</p>
         </div>
         <div>
           <form onSubmit={(event) => {event.preventDefault()}}>
@@ -37,7 +38,7 @@ export function LoginBox() {
             <button 
               disabled={userName.length == 0} 
               type="submit"
-              onClick={signIn}
+              onClick={handleLogin}
             >
               <img src="/icons/right-arrow.svg" alt="entrar" />
             </button>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WebAPI.Models
@@ -16,5 +18,10 @@ namespace WebAPI.Models
         public int? Level { get; set; }
         public int? LevelExperience { get; set; }
         public List<ChallengeUser> UserChallenges { get; set; }
+        public string avatar_url { get; set; }
+        public string bio { get; set; }
+
+        [NotMapped]
+        public string Token { get; set; }
     }
 }

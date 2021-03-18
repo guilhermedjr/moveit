@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  moveit-mysql:
+    image: mysql:8.0.23
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_HOST=127.0.0.1
+      - MYSQL_ROOT_PASSWORD="root"
+      - MYSQL_DATABASE="dopaminadb"
+    volumes:
+      - './volumes/mysql:/var/lib/mysql'
+    networks:
+      - moveit-network
+
+  moveit-server:
+    build:
+      context: ./server/server
+    ports: 
+      - 44311:44311
+    volumes:
+      - ./server/server:/usr/src/moveit/server/server
+    networks:
+      - moveit-network
+
+  moveit-web:
+    build:
+      context: ./web
+    ports:
+      - 3000:3000
+    volumes:
+      - ./web:/usr/src/moveit/web
+      - /usr/src/moveit/web
+    networks:
+      - moveit-network
+
+networks:
+  moveit-network: 
+    driver: bridge

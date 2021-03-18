@@ -17,22 +17,17 @@ services:
 
   moveit-server:
     build:
-      context: ./server/server
+      context: ../server/server
     ports: 
       - 44311:44311
-    volumes:
-      - ./server/server:/usr/src/moveit/server/server
     networks:
       - moveit-network
 
   moveit-web:
     build:
-      context: ./web
+      context: ../web
     ports:
       - 3000:3000
-    volumes:
-      - ./web:/usr/src/moveit/web
-      - /usr/src/moveit/web
     networks:
       - moveit-network
 

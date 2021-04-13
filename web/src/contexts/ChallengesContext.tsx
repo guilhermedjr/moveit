@@ -9,7 +9,7 @@ type Challenge = {
   amount: number;
 }
 
-interface ChallengesContextData {
+type ChallengesContextData = {
   level: number;
   currentExperience: number;
   experienceToNextLevel: number;
@@ -22,7 +22,7 @@ interface ChallengesContextData {
   closeLevelUpModal: () => void;
 }
 
-interface ChallengesProviderProps {
+type ChallengesProviderProps = {
   children: ReactNode;
   level: number;
   currentExperience: number;

@@ -2,28 +2,24 @@ import { createContext, ReactNode, SetStateAction, useEffect, useState } from "r
 import { useRouter } from 'next/router'
 import Cookies from "js-cookie"
 
+import { IUser } from '../types/Entity'
+
 import { Serotonina } from '../services/Serotonina'
 import { UserController } from '../services/controllers/UserController'
 import { AccountController } from '../services/controllers/AccountController'
-import * as IUserUpdateData from '../contracts/IUser'
 
-type IUser = {
-  name: string;
-  username: string;
-  avatar_url: string;
-  bio: string;
-}
+type UserData = Omit<IUser, "email">
 
-interface AuthContextData {
+type AuthContextData = {
   login: (userName: string) => Promise<boolean>
   signIn: (userName: string) => Promise<void>
   //logout: () => Promise<void>
-  user: IUser
+  user: UserData
   logOutDisplayed: Boolean
   setLogOutDisplayed: any
 }
 
-interface AuthProviderProps {
+type AuthProviderProps = {
   children: ReactNode;
 }
 
@@ -31,13 +27,13 @@ export const AuthContext = createContext({} as AuthContextData)
 
 export function AuthProvider({children}: AuthProviderProps) {
   const router = useRouter()
-  const [user, setUser] = useState<IUser>({} as IUser)
+  const [user, setUser] = useState<UserData>({} as UserData)
   const [logOutDisplayed, setLogOutDisplayed] = useState(false)
 
   async function loadUserCookie(): Promise<void> {
     const userCookie = Cookies.get('user')
     if (typeof(userCookie) !== 'undefined') {
-      const userCookieParse = JSON.parse(userCookie) as IUser;
+      const userCookieParse = JSON.parse(userCookie) as UserData;
       const userParams = {
         name: userCookieParse.name,
         username: userCookieParse.username,
@@ -58,7 +54,7 @@ export function AuthProvider({children}: AuthProviderProps) {
     if (user.data === null)
       return false
 
-    const userData : IUser = {
+    const userData: UserData = {
       username: user.username,
       name: user.name,
       avatar_url: user.avatar_url,
@@ -70,7 +66,7 @@ export function AuthProvider({children}: AuthProviderProps) {
     return true
   }
 
-  async function signIn(userName: string) : Promise<any> {
+  async function signIn(userName: string): Promise<any> {
     try {
       const data = 
         await new Serotonina().httpGet(`https://api.github.com/users/${userName}`)

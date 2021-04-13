@@ -1,5 +1,5 @@
 import { Serotonina } from "../Serotonina";
-import { IUser } from '../../contracts/IUser'
+import { IUser } from '../../types/Entity'
 
 export class UserController extends Serotonina {
   constructor() {

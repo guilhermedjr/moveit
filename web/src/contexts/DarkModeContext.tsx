@@ -2,13 +2,13 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import Cookies from "js-cookie";
 import {} from '../components/DarkModeButton'
 
-interface DarkModeContextData {
+type DarkModeContextData = {
   isActive: boolean;
   activateDarkMode: () => void;
   deactivateDarkMode: () => void;
 }
 
-interface DarkModeProviderProps {
+type DarkModeProviderProps = {
   children: ReactNode;
 }
 

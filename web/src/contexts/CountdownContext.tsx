@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { ChallengesContext } from "./ChallengesContext";
 
-interface CountdownContextData {
+type CountdownContextData = {
   minutes: number;
   seconds: number;
   hasFinished: boolean;
@@ -10,7 +10,7 @@ interface CountdownContextData {
   resetCountdown: () => void;
 }
 
-interface CountdownProviderProps {
+type CountdownProviderProps = {
   children: ReactNode;
 }
 

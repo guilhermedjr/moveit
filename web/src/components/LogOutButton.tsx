@@ -3,7 +3,7 @@ import { AuthContext } from "../contexts/AuthContext"
 import styles from '../styles/components/LogOutButton.module.css'
 
 export function LogOutButton() {
-  const { logOutDisplayed, logout } = useContext(AuthContext)
+  const { logOutDisplayed } = useContext(AuthContext)
 
   return (
     <div>
@@ -11,7 +11,7 @@ export function LogOutButton() {
         <button
           className={styles.logOutButton}
           style={{display: 'block'}}
-          onClick={logout}
+          // onClick={logout}
         >
           Sair
         </button>
@@ -19,7 +19,7 @@ export function LogOutButton() {
         <button
           className={styles.logOutButton}
           style={{display: 'none'}}
-          onClick={logout}
+          // onClick={logout}
         > 
           Sair
         </button>

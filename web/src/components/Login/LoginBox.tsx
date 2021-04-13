@@ -1,5 +1,5 @@
 import router from 'next/router'
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import styles from '../../styles/components/Login/LoginBox.module.css' 
 
@@ -11,6 +11,10 @@ export function LoginBox() {
   async function handleLogin() : Promise<void> {
     if (!await login(userName))
       await signIn(userName)
+  }
+
+  const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setUserName(e.target.value)
   }
 
   return (
@@ -33,7 +37,7 @@ export function LoginBox() {
               type="text" 
               placeholder="Digite seu username"
               value={userName}
-              onChange={event => setUserName(event.target.value)}
+              onChange={e => onUsernameChange(e)}
             />
             <button 
               disabled={userName.length == 0} 

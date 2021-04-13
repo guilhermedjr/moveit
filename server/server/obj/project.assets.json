@@ -2390,20 +2390,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Endorfina/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.3",
-          "MySql.EntityFrameworkCore": "5.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Endorfina.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Endorfina.dll": {}
-        }
       }
     }
   },
@@ -8095,16 +8081,10 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "Endorfina/1.0.0": {
-      "type": "project",
-      "path": "../Endorfina/Endorfina.csproj",
-      "msbuildProject": "../Endorfina/Endorfina.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Endorfina >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.4",
       "Microsoft.EntityFrameworkCore >= 5.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.3",
@@ -8113,6 +8093,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.3",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
+      "MySql.EntityFrameworkCore >= 5.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -8142,11 +8123,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\Endorfina\\Endorfina.csproj": {
-              "projectPath": "C:\\Users\\GuilhermeSantos-BDSD\\Documents\\GitHub\\moveit\\server\\Endorfina\\Endorfina.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -8194,6 +8171,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[5.0.2, )"
+          },
+          "MySql.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

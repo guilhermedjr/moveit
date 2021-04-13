@@ -7,7 +7,7 @@ import { UserController } from '../services/controllers/UserController'
 import { AccountController } from '../services/controllers/AccountController'
 import * as IUserUpdateData from '../contracts/IUser'
 
-interface IUser {
+type IUser = {
   name: string;
   username: string;
   avatar_url: string;

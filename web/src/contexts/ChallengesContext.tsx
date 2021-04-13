@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/Home/LevelUpModal';
 
-interface Challenge {
+type Challenge = {
   type: 'body' | 'eye'
   description: string;
   amount: number;
